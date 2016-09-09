@@ -33,6 +33,10 @@ public class SimpleSolrMRIndexer extends Configured implements Tool {
     private List<SolrInputDocument> batch = new ArrayList<>();
 
     @Override
+    /**
+     * Create a local CloudSolrServer object to use in this Mapper and set the relevant Java property
+     * to ensure delegation token is passed to the SolrServer.
+     */
     protected void setup(Context context) throws IOException, InterruptedException {
       super.setup(context);
       String zkHosts = context.getConfiguration().get("solr.zk");
